@@ -86,7 +86,6 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 showWeather(buffer.toString());
-                Toast.makeText(MainActivity.this, "Up to date !", Toast.LENGTH_LONG).show();
                 return buffer.toString();
 
             } catch (MalformedURLException e) {
@@ -94,9 +93,6 @@ public class MainActivity extends AppCompatActivity {
             } catch (ProtocolException e) {
                 e.printStackTrace();
             } catch (IOException e) {
-                e.printStackTrace();
-            } catch (NullPointerException e){
-                Toast.makeText(MainActivity.this, "No Network !", Toast.LENGTH_LONG).show();
                 e.printStackTrace();
             }
             return null;
@@ -171,25 +167,11 @@ public class MainActivity extends AppCompatActivity {
 
                     m_vDailyWeather.add(dailyWeather);
                 }
-
-
-
-
             }
             catch (Exception e){
                 e.printStackTrace();
             }
         }
-
-        private boolean isNetWorkAvailable(Context context){
-            ConnectivityManager cm = (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
-            NetworkInfo networkInfo = cm.getActiveNetworkInfo();
-            if(networkInfo!=null && networkInfo.isAvailable()){
-                return true;
-            }
-            return false;
-        }
-
 
     }
 
